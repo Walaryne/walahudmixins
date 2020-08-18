@@ -35,11 +35,13 @@ public abstract class RenderHandlerMixin {
             return;
         }
 
-        RegistryKey<DimensionType> dimension = mc.world.getDimensionRegistryKey();
-        if (dimension == DimensionType.THE_NETHER_REGISTRY_KEY) {
-            this.addLine(String.format("XYZ-OW: %.2f / %.4f / %.2f", entity.getX() * 8, y, entity.getZ() * 8));
-        } else if (dimension == DimensionType.OVERWORLD_REGISTRY_KEY) {
-            this.addLine(String.format("XYZ-NE: %.2f / %.4f / %.2f", entity.getX() / 8, y, entity.getZ() / 8));
+        if(InfoToggle.COORDINATES.getBooleanValue()) {
+            RegistryKey<DimensionType> dimension = mc.world.getDimensionRegistryKey();
+            if (dimension == DimensionType.THE_NETHER_REGISTRY_KEY) {
+                this.addLine(String.format("XZ-OW: %.2f / %.2f", entity.getX() * 8, entity.getZ() * 8));
+            } else if (dimension == DimensionType.OVERWORLD_REGISTRY_KEY) {
+                this.addLine(String.format("XZ-NE: %.2f / %.2f", entity.getX() / 8, entity.getZ() / 8));
+            }
         }
     }
 }
