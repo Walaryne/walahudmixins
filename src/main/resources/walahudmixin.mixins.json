@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "walaryne.walahudmixins.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "RenderHandlerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
