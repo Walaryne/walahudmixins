@@ -30,7 +30,6 @@ public abstract class RenderHandlerMixin {
             remap = false)
     private void onAddLine(InfoToggle type, CallbackInfo ci) {
         Entity entity = mc.getCameraEntity();
-        double y = entity.getBoundingBox().minY;
         if(this.addedTypes.contains(InfoToggle.COORDINATES)) {
             return;
         }
