@@ -23,14 +23,16 @@ public abstract class RenderHandlerMixin {
 
     @Final
     @Shadow(remap = false)
-    private MinecraftClient mc = MinecraftClient.getInstance();
+    final private MinecraftClient mc = MinecraftClient.getInstance();
 
-    @Inject(at = @At("TAIL"),
+    @Inject(at = @At(value = "INVOKE",
+                     target = "Lfi/dy/masa/minihud/config/InfoToggle;getBooleanValue()Z",
+                     ordinal = 0),
             method = "addLine(Lfi/dy/masa/minihud/config/InfoToggle;)V",
             remap = false)
     private void onAddLine(InfoToggle type, CallbackInfo ci) {
         Entity entity = mc.getCameraEntity();
-        if(this.addedTypes.contains(InfoToggle.COORDINATES)) {
+        if(this.addedTypes.contains(InfoToggle.COORDINATES) || this.addedTypes.contains(InfoToggle.DIMENSION)) {
             return;
         }
 
